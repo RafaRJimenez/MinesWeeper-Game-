@@ -126,6 +126,7 @@ function restartGame(){ // esta función me permite reiniciar el juego, para ell
 	seconds = 0;
 	totalClicks=0;
 	arr = [];
+	$('#puntuacion').html(points);
 	initContent();
 }
 
