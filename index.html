@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	 <link rel="stylesheet" type="text/css" href="./css/style.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	
+	<div id="titleContainer">
+		<img class="movingBug" src="./img/title.gif" />
+		<h1 id="mainTitle">Debug your code</h1>
+		<img class="movingBug" src="./img/title.gif" />
+	</div>
+	<div class="gameFinished">
+		<div class="stats"></div>
+		<div onclick='restartGame()' class="restartGame">
+			REINICIAR JUEGO
+		</div>
+	</div>
+	<div class="containerCentral">
+	<div id="contenedorPuntuacion">
+			<h2>Puntuación: </h2>
+			<div id="puntuacion"></div>
+	</div>
+	<div id="contenedorTiempo">
+		<h2>Tiempo: </h2>
+			<div id="tiempo"></div>
+	</div>
+	
+	<!--
+	<div onclick="showBombs()" class="showBombs">
+		Ver bombas (Modo extra fácil)
+	</div>
+	-->
+	
+	</div>
+	<details>
+		<summary>Ver bombas (Modo extra fácil)</summary>
+		<div class="showBombs"></div>
+	</details>
+	<div id="contenedorTablero">
+		<div id="tablero"></div>
+	</div>
+	
+	<script src="./js/bugsweeper.js"></script>
+</body>
+
+</html>
