@@ -15,12 +15,24 @@ var cellProperties = {
 }
 var panel = new Array(); //nuestro panel que al principio es un Array vacio y que posteriormente deberemos convertir en un array de arrays.
 
-/**Esta función pregunta al usuario todos los datos necesarios para poder comenzar el juego*/
+/**Esta función pregunta al usuario todos los datos necesarios para poder comenzar el juego, estableciendo que sea  mayor que 0 y que sea un número para no provocar bugs*/
 var askForParams = function(){
 	
 	bugs = prompt("introduce el número de bugs");
+	while (bugs < 1 || isNaN(bugs)) {
+		alert("el número de bugs debe ser mayor que 0");
+		bugs = prompt("introduce el número de bugs");
+	}
 	rows = prompt("introduce el número de filas");
+	while (rows < 1 || isNaN(rows)) {
+		alert("el número de filas debe ser mayor que 0");
+		rows = prompt("introduce el número de filas");
+	}
 	columns = prompt("introduce el número de columnas");
+	while (columns < 1 || isNaN(columns)) {
+		alert("el número de columnas debe ser mayor que 0");
+		columns = prompt("introduce el número de columnas");
+	}
 }
 
 /**Inicializa el panel. Para ello crea un array bidimensional. Cada posición del array será una casilla que deberá rellenarse por defecto con un cellProperties**/
