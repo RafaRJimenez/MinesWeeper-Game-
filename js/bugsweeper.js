@@ -15,12 +15,24 @@ var cellProperties = {
 }
 var panel = new Array(); //nuestro panel que al principio es un Array vacio y que posteriormente deberemos convertir en un array de arrays.
 
-/**Esta función pregunta al usuario todos los datos necesarios para poder comenzar el juego*/
+/**Esta función pregunta al usuario todos los datos necesarios para poder comenzar el juego, estableciendo que sea  mayor que 0 y que sea un número para no provocar bugs*/
 var askForParams = function(){
 	
 	bugs = prompt("introduce el número de bugs");
+	while (bugs < 1 || isNaN(bugs)) {
+		alert("el número de bugs debe ser mayor que 0");
+		bugs = prompt("introduce el número de bugs");
+	}
 	rows = prompt("introduce el número de filas");
+	while (rows < 1 || isNaN(rows)) {
+		alert("el número de filas debe ser mayor que 0");
+		rows = prompt("introduce el número de filas");
+	}
 	columns = prompt("introduce el número de columnas");
+	while (columns < 1 || isNaN(columns)) {
+		alert("el número de columnas debe ser mayor que 0");
+		columns = prompt("introduce el número de columnas");
+	}
 }
 
 /**Inicializa el panel. Para ello crea un array bidimensional. Cada posición del array será una casilla que deberá rellenarse por defecto con un cellProperties**/
@@ -95,7 +107,7 @@ function checkBox(e) { // esta función se activa al pulsar una casilla, si no e
 			$('.stats').html('LO SENTIMOS!! HAS ENCONTRADO UN BUG! TU PUNTUACIÓN HASTA EL MOMENTO: <br> ' + points + ' puntos <br><br>'
 			+ 'Tu partida ha durado: ' + $('#tiempo').html() + ' minutos <br><br>' );
 			$('#contenedorTablero').css('pointer-events', 'none'); // Bloqueo que el jugador pueda seguir pulsando casillas en la matriz hasta que reinicie la partida
-	} else if(arr[e.id.charAt(0)][e.id.charAt(2)] != 'bomb' && 'clear') { // si la casilla no contiene un bug mostramos el acierto en pantalla
+	} else if(arr[positions[0]][positions[1]] != ('bomb' && 'clear')) { // si la casilla no contiene un bug o ya ha sido abierta mostramos el acierto en pantalla
 		totalClicks +=1;												  // sumamos puntos y sumamos otro click para el total de aciertos
 		td.html("<img src='img/clear.png'>");
 		$('#puntuacion').html(points += 10);
@@ -134,8 +146,7 @@ function restartGame(){ // esta función me permite reiniciar el juego, para ell
 var initContent = function(){
 	askForParams();
 	initPanel(columns,rows);
-	makeRandomBugsInPanel(bugs)
-	renderPanel(panel);
+	makeRandomBugsInPanel(bugs);
 }
 
 document.addEventListener('DOMContentLoaded', initContent, false);
